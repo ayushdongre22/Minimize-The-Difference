@@ -1,0 +1,18 @@
+#include <bits/stdc++.h> 
+#include<algorithm>
+int minimizeIt(vector<int> A, int K)
+{	sort(A.begin(),A.end());
+	int n=A.size();
+	int maxi=A[n-1]-K;
+	int mini=A[0]+K;
+	int cmin,cmax;
+	int c=A[n-1]-A[0];
+	for(int i=1;i<n-1;i++){
+		cmin=min(mini,A[i+1]-K);
+		cmax=max(maxi,A[i]+K);
+		if(cmin>=0){
+			c=min(c,cmax-cmin);
+		}
+	}
+	return c;
+}
